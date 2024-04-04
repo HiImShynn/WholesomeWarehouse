@@ -54,4 +54,3 @@ class RetrieveUpdateDeleteStaff(RetrieveUpdateDestroyAPIView):
     # Set permission to request.user == objects.user
     queryset = Staff.objects.all()
     serializer_class = StaffSerializer
-   
