@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # Internal apps
     'api',
     'user',
+    'authenticate',
 ]
 
 MIDDLEWARE = [
@@ -141,8 +142,13 @@ CORS_ALLOWED_ORIGINS = [
 
 # REST framework settings
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES':[],
+    'DEFAULT_AUTHENTICATION_CLASSES':[
+        'rest_framework.authentication.SessionAuthentication',
+    ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
+    ],
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
     ]
 }
