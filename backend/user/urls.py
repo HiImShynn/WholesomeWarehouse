@@ -17,4 +17,5 @@ urlpatterns = [
         view=views.RetrieveUpdateDeletePartner.as_view(),
         name='edit-partner',
     ),
+    path('register/', view=views.PartnerCreate.as_view(), name='partner-register'),
 ]

@@ -1,11 +1,15 @@
+"""DOCSTRING"""
 from django.urls import path
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, TokenVerifyView
+# from . import views
 
-from . import views
+class MyTokenVerifyView(TokenVerifyView):
+    def finalize_response(self, request, response, *args, **kwargs):
+        print(request.user)
+        return super().finalize_response(request, response, *args, **kwargs)
 
 urlpatterns = [
-    path('csrf/', views.get_csrf, name='auth-csrf'),
-    path('login/', views.login_view, name='auth-login'),
-    path('logout/', views.logout_view, name='auth-logout'),
-    path('session/', views.SessionView.as_view(), name='auth-session'),
-    path('whoami/', views.WhoAmIView.as_view(), name='auth-whoami'),
+    path('token/', TokenObtainPairView.as_view(), name='token-obtain-pair'),
+    path('token/refresh', TokenRefreshView.as_view(), name='token-refresh'),
+    path('token/verify', MyTokenVerifyView.as_view(), name='token-verify'),
 ]
