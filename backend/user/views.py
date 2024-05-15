@@ -6,35 +6,22 @@ from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
 from .models import Staff, Partner
 from .serializers import StaffSerializer, PartnerSerializer, RegisterPartnerSerializer
+from .permissions import StaffPermission
 
 class ListStaff(APIView):
     """DOCSTRING"""
     def get(self, request):
         list_of_staffs = Staff.objects.all()
         serializer = StaffSerializer(list_of_staffs, many=True)
-        return Response(
-            {
-                'message': 'Success',
-                'data': serializer.data,
-                'status': status.HTTP_200_OK,
-            }, status=status.HTTP_200_OK
-        )
+        return Response(serializer.data, status=status.HTTP_200_OK)
     
-from .permissions import StaffPermission
-
 class ListPartner(APIView):
     """DOCSTRING"""
     permission_classes = [StaffPermission]
     def get(self, request):
         list_of_partners = Partner.objects.all()
         serializer = PartnerSerializer(list_of_partners, many=True)
-        return Response(
-            {
-                'message': 'Success',
-                'data': serializer.data,
-                'status': status.HTTP_200_OK,
-            }, status=status.HTTP_200_OK
-        )
+        return Response( serializer.data, status=status.HTTP_200_OK)
 
 # CreateAPIView -> Create Partner
 class CreatePartner(CreateAPIView):
