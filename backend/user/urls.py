@@ -4,7 +4,7 @@ from . import views
 
 urlpatterns = [
     path('staff/', view=views.ListStaff.as_view(), name='list-staff'),
-    path('create-staff/', view=views.CreateStaff.as_view(), name='create-staff'),
+    path('create-staff/', view=views.StaffCreate.as_view(), name='create-staff'),
     path(
         'staff/<int:pk>/', 
         view=views.RetrieveUpdateDeleteStaff.as_view(),

@@ -10,13 +10,13 @@ services:
       - db
 
   db:
-    image: postgres:15.6
+    image: postgres:15.7
     ports: 
-      - "5432:5432"
+      - "5435:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
-      - "POSTGRES_PASSWORD=nit6150"
+      - "POSTGRES_PASSWORD=30102000"
 
   pgAdmin:
     image: dpage/pgadmin4:8.4
@@ -24,7 +24,7 @@ services:
       - "2345:80"
     environment:
       - 'PGADMIN_DEFAULT_EMAIL=nit6150@gmail.com'
-      - 'PGADMIN_DEFAULT_PASSWORD=nit6150'
+      - 'PGADMIN_DEFAULT_PASSWORD=30102000'
     volumes:
       - pgAdmin_data:/var/lib/pgAdmin
     

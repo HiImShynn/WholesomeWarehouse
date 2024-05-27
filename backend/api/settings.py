@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'api',
     'user',
     'authenticate',
+    'items',
 ]
 
 MIDDLEWARE = [
@@ -82,24 +83,24 @@ WSGI_APPLICATION = 'api.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 # Uncomment this for development
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-# Uncomment this for deployment
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'postgres',
-#         'USER': 'postgres',
-#         'PASSWORD': 'postgres',
-#         'HOST': 'db',
-#         'PORT': 5432,
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
+# Uncomment this for deployment
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': '30102000',
+        'HOST': 'db',
+        'PORT': 5432,
+    }
+}
 
 
 
@@ -172,5 +173,4 @@ SESSION_COOKIE_SAMESITE = 'Lax'
 CSRF_COOKIE_HTTPONLY = True
 SESSION_COOKIE_HTTPONLY = True
 CSRF_TRUSTED_ORIGINS = ['http://localhost:5173']
-
 # rest_framework_simplejwt
